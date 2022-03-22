@@ -1,17 +1,17 @@
-
-StorageSystem = class(function(speed, length, width, height)
+StorageSystem = {}
+function StorageSystem:create(speed, length, width, height)
     StorageSystem.speed = speed
 
-    StorageSystem.lenght = length
+    StorageSystem.length = length
     StorageSystem.width = width
     StorageSystem.height = height
-end)
+end
 
 function StorageSystem:Move(x, y)
     
 end
 
-system1 = StorageSystem(256,100,25,10)
+system = StorageSystem:create(256,100,25,10)
 
 
 
@@ -30,4 +30,4 @@ end)
     redstone.setAnalogOutput("front", g2)]]
 
 
-print(system1.width)
+print(system.width)
