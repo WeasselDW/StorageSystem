@@ -1,0 +1,14 @@
+{
+  "name": "storageserver",
+  "version": "1.0.0",
+  "description": "Storage system server",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Wssl & mochfook",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.4.1"
+  }
+}
