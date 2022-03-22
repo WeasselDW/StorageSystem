@@ -1,4 +1,5 @@
 StorageSystem = {}
+redstoneOutput = {}
 function StorageSystem:create(speed, length, width, height)
     StorageSystem.speed = speed
 
@@ -15,14 +16,14 @@ system = StorageSystem:create(256,100,25,10)
 
 
 
-redstoneOutput = class(function()
+function redstoneOutput:create()
 
     redstoneOutput.clutch = true
     redstoneOutput.gearshift = false
     redstoneOutput.gantry1 = false
     redstoneOutput.gantry2 = false
     redstoneOutput.sticker = false
-end)
+end
     --[[redstone.setAnalogOutput("right", clutch)
     redstone.setAnalogOutput("left", gearshift)
     redstone.setAnalogOutput("top", g1)
