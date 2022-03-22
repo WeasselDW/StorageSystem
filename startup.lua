@@ -1,12 +1,12 @@
 
-StorageSystem = class(function(speed, length, width, height))
+StorageSystem = class(function(speed, length, width, height)
     StorageSystem.speed = speed
 
     StorageSystem.lenght = length
     StorageSystem.width = width
     StorageSystem.height = height
     
-end
+)
 
 function StorageSystem:Move(x, y)
     
