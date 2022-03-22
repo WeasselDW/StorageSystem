@@ -1,5 +1,7 @@
 StorageSystem = {}
+StorageSystem.__index = StorageSystem
 redstoneOutput = {}
+redstoneOutput.__index = redstoneOutput
 function StorageSystem:create(speed, length, width, height)
     local obj = {}
     setmetatable(obj, StorageSystem)
