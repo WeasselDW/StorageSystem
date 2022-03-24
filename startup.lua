@@ -1,42 +1,28 @@
-StorageSystem = {}
-StorageSystem.__index = StorageSystem
-redstoneOutput = {}
-redstoneOutput.__index = redstoneOutput
-function StorageSystem:create(speed, length, width, height)
-    local obj = {}
-    setmetatable(obj, StorageSystem)
+--==========VARIABLES============ --
+-- Constant
+modemChannel = 6969
 
-    StorageSystem.speed = speed
 
-    StorageSystem.length = length
-    StorageSystem.width = width
-    StorageSystem.height = height
-    return obj
+
+
+--==========INITIATING============ --
+print("initiating StorageSystem")
+os.loadAPI("StorageSystemAPI")
+
+-- Websocket init
+print("Starting websocket")
+ws, err = http.websocket("localhost:8080")
+if ws then
+    print("Websocket initiated")
 end
 
-function StorageSystem:Move(x, y)
-    
-end
+print("Starting Modem")
+modem = peripheral.wrap("bottom")
+--modem.open(modemChannel)
+--if modem.isOpen(modemChannel) then
+--    print("Modem initialized")
+--end
 
-system = StorageSystem:create(256,100,25,10)
-
-
-
-function redstoneOutput:create()
-    local obj = {}
-    setmetatable(obj, redstoneOutput)
-    redstoneOutput.clutch = true
-    redstoneOutput.gearshift = false
-    redstoneOutput.gantry1 = false
-    redstoneOutput.gantry2 = false
-    redstoneOutput.sticker = false
-    return obj
-end
-    --[[redstone.setAnalogOutput("right", clutch)
-    redstone.setAnalogOutput("left", gearshift)
-    redstone.setAnalogOutput("top", g1)
-    redstone.setAnalogOutput("back", sticker)
-    redstone.setAnalogOutput("front", g2)]]
-
-
-print(system.width)
+--==========CODE============ --
+system = StorageSystemAPI.StorageSystem:create(256,100,25,10)
+system.StorageSystem:Move(5,3,5)
