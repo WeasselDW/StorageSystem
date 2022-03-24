@@ -1,0 +1,110 @@
+print("Loading StorageSystemAPI")
+StorageSystem = {}
+StorageSystem.__index = StorageSystem
+Output = {}
+Output.__index = Output
+function StorageSystem:create(lSpeed, lRows, lWidth, lHeight)
+    local obj = {}
+    setmetatable(obj, StorageSystem)
+    --Set Variables
+    self.speed = lSpeed
+
+    self.dimentions = {
+        width = lWidth,
+        length = (lRows * 4) + 3,
+        rows = lRows,
+        height = lHeight
+    }
+
+    self.position = {
+        x = 10,
+        y = 5,
+        z = 7
+    }
+    return obj
+end
+
+function StorageSystem:Move(x, y, z)
+    local clutch = "right"
+    local gearshift = "left"
+    local gantry1 = "top"
+    local gantry2 = "front"
+    local sticker = "back"
+    
+    local function travelDelay(blocks)
+        sleep(51.2/self.speed+25.6/self.speed*(blocks+1/60*blocks))
+    end
+
+    local function moveX(newX)
+        --logposition()
+        local dX = newX - currentX
+        
+        if dX = 0 then
+            return 0
+        elseif dX > 0 then
+            redstone.setOutput(gearshift, false)
+        elseif dX < 0 then
+            redstone.setOutpzut(gearshift, true)
+        end
+        redstone.setOutput(gantry1, true)
+        redstone.setOutput(gantry2, true)
+        redstone.setOutput(clutch, false)
+        travel(math.abs(dX))
+        redstone.setOutput(clutch, true)
+        redstone.setOutput(gantry1, false)
+        redstone.setOutput(gantry2, false)
+        redstone.setOutput(gearshift, false)
+        
+        --logposition()
+    end
+    local function moveY(newY)
+        --logposition()
+        local dY = newY - currentY
+        if dY = 0 then
+            return 0
+        elseif dY > 0 then
+            redstone.setOutput(gearshift, false)
+        elseif dY < 0 then
+            redstone.setOutput(gearshift, true)
+        end
+        redstone.setOutput(gantry1, true)
+        redstone.setOutput(clutch, false)
+        travel(math.abs(dY))
+        redstone.setOutput(clutch, true)
+        redstone.setOutput(gantry1, false)
+        redstone.setOutput(gearshift, false)
+        --logposition()
+    end
+        local function moveZ(newLane)
+        --logposition()
+        local dZ = newZ - currentZ
+        
+        if dZ = 0 then
+            return 0
+        elseif dZ > 0 then
+            redstone.setOutput(gearshift, false)
+        elseif dZ < 0 then
+            redstone.setOutput(gearshift, true)
+        end
+        redstone.setOutput(clutch, false)
+        travel(math.abs(dZ))
+        redstone.setOutput(clutch, true)
+        redstone.setOutput(gearshift, false)
+    --logposition()
+    end
+    moveX(x)
+    moveY(y)
+    moveZ(z)
+    
+    
+end
+
+
+print("loaded StorageSystemAPI")
+    --[[redstone.setAnalogOutput("right", clutch)
+    redstone.setAnalogOutput("left", gearshift)
+    redstone.setAnalogOutput("top", g1)
+    redstone.setAnalogOutput("back", sticker)
+    redstone.setAnalogOutput("front", g2)]]
+
+
