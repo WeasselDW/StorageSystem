@@ -42,9 +42,9 @@ function StorageSystem:Move(x, y, z)
         if dX == 0 then
             return 0
         elseif dX > 0 then
-            redstone.setOutput(gearshift, false)
-        elseif dX < 0 then
             redstone.setOutput(gearshift, true)
+        elseif dX < 0 then
+            redstone.setOutput(gearshift, false)
         end
         redstone.setOutput(gantry1, true)
         redstone.setOutput(gantry2, true)
