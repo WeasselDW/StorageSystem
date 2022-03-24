@@ -17,9 +17,9 @@ function StorageSystem:create(lSpeed, lRows, lWidth, lHeight)
     }
 
     self.position = {
-        x = 10,
-        y = 5,
-        z = 7
+        x = 0,
+        y = 0,
+        z = 0
     }
     return obj
 end

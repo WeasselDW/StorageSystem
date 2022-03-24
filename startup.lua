@@ -26,4 +26,5 @@ modem = peripheral.wrap("bottom")
 --==========CODE============ --
 system = StorageSystemAPI.StorageSystem:create(256,100,25,10)
 print(system.position.x)
+read()
 system:Move(5,3,5)
