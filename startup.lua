@@ -11,7 +11,7 @@ os.loadAPI("StorageSystemAPI")
 
 -- Websocket init
 print("Starting websocket")
-ws, err = http.websocket("localhost:8080")
+--ws, err = http.websocket("localhost:8080")
 if ws then
     print("Websocket initiated")
 end
@@ -25,4 +25,5 @@ modem = peripheral.wrap("bottom")
 
 --==========CODE============ --
 system = StorageSystemAPI.StorageSystem:create(256,100,25,10)
-system.StorageSystem:Move(5,3,5)
+print(system.position.x)
+system:Move(5,3,5)

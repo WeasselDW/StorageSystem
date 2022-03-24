@@ -37,19 +37,19 @@ function StorageSystem:Move(x, y, z)
 
     local function moveX(newX)
         --logposition()
-        local dX = newX - currentX
+        local dX = newX - self.position.x 
         
-        if dX = 0 then
+        if dX == 0 then
             return 0
         elseif dX > 0 then
             redstone.setOutput(gearshift, false)
         elseif dX < 0 then
-            redstone.setOutpzut(gearshift, true)
+            redstone.setOutput(gearshift, true)
         end
         redstone.setOutput(gantry1, true)
         redstone.setOutput(gantry2, true)
         redstone.setOutput(clutch, false)
-        travel(math.abs(dX))
+        travelDelay(math.abs(dX))
         redstone.setOutput(clutch, true)
         redstone.setOutput(gantry1, false)
         redstone.setOutput(gantry2, false)
@@ -59,8 +59,8 @@ function StorageSystem:Move(x, y, z)
     end
     local function moveY(newY)
         --logposition()
-        local dY = newY - currentY
-        if dY = 0 then
+        local dY = newY - self.position.y
+        if dY == 0 then
             return 0
         elseif dY > 0 then
             redstone.setOutput(gearshift, false)
@@ -69,17 +69,17 @@ function StorageSystem:Move(x, y, z)
         end
         redstone.setOutput(gantry1, true)
         redstone.setOutput(clutch, false)
-        travel(math.abs(dY))
+        travelDelay(math.abs(dY))
         redstone.setOutput(clutch, true)
         redstone.setOutput(gantry1, false)
         redstone.setOutput(gearshift, false)
         --logposition()
     end
-        local function moveZ(newLane)
+        local function moveZ(newZ)
         --logposition()
-        local dZ = newZ - currentZ
+        local dZ = newZ - self.position.z
         
-        if dZ = 0 then
+        if dZ == 0 then
             return 0
         elseif dZ > 0 then
             redstone.setOutput(gearshift, false)
@@ -87,7 +87,7 @@ function StorageSystem:Move(x, y, z)
             redstone.setOutput(gearshift, true)
         end
         redstone.setOutput(clutch, false)
-        travel(math.abs(dZ))
+        travelDelay(math.abs(dZ))
         redstone.setOutput(clutch, true)
         redstone.setOutput(gearshift, false)
     --logposition()
