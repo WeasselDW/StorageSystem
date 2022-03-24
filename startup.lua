@@ -18,10 +18,10 @@ end
 
 print("Starting Modem")
 modem = peripheral.wrap("bottom")
---modem.open(modemChannel)
---if modem.isOpen(modemChannel) then
---    print("Modem initialized")
---end
+modem.open(modemChannel)
+if modem.isOpen(modemChannel) then
+    print("Modem initialized")
+end
 
 --==========CODE============ --
 system = StorageSystemAPI.StorageSystem:create(256,100,25,10)
