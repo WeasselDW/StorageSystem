@@ -9,6 +9,8 @@
   "author": "Wssl & mochfook",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^4.4.1"
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.8",
+    "websocket": "^1.0.34"
   }
 }
