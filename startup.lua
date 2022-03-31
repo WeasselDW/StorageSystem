@@ -29,7 +29,7 @@ redstone.setOutput("right", true)
 
 --==========CODE============ --
 system = StorageSystemAPI.StorageSystem:create(256,17,11,11)
-x = read()
-y = read()
-z = read()
+x = tonumber(read())
+y = tonumber(read())
+z = tonumber(read())
 system:Move(x,y,z)
