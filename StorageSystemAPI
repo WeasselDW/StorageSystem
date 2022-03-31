@@ -140,7 +140,7 @@ function StorageSystem:Move(x, y, z)
             -- use lane system from xyz
             laneCoord = math.ceil((self.position.z-2)/4)
         return laneCoord
-    
+        end    
     end
 
 zLane = calculateLane(z, false)    
