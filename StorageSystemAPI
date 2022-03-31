@@ -115,7 +115,7 @@ function StorageSystem:Move(x, y, z)
     end
     --demo order: 0, 0, 1
 
-    local currentlane = math.ceil((self.position.z-2)/4)
+    local currentlane = math.ceil((self.position.z-2)/4-1)
 
     local function moveLane(x, y, z)
         if math.ceil((z-2)/4-1) ~= currentlane then
@@ -138,7 +138,7 @@ function StorageSystem:Move(x, y, z)
         return z
         else
             -- use lane system from xyz
-            laneCoord = math.ceil((self.position.z-2)/4)
+            laneCoord = z*4+6
         return laneCoord
         end    
     end
