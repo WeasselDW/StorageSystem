@@ -117,20 +117,20 @@ function StorageSystem:Move(x, y, z)
 
     
 
-    local function moveLane(x, y, z, zLane)
+    local function moveLane(x, y, z, lane)
     self.position = logposition()
     print("pos:"..self.position.z) 
-    local zCurrentLane = math.ceil((self.position.z-2)/4-1)    
-    print("lane:"..zLane.."|curlane:"..zCurrentLane) 
-    print(zLane == zCurrentLane)
-        if zLane == zCurrentLane then
+    local currentLane = math.ceil((self.position.z-2)/4-1)    
+    print("lane:"..lane.."|curlane:"..currentLane) 
+    print(toNumber(lane) == toNumber(currentLane))
+        if (lane == currentLane) then
             --move over barrels
             print("epic")
             moveX(x)        
             moveZ(z)
             moveY(y)
             
-        else
+        elseif lane ~= currentLane then
             --move naar positie in lane
             print("bruh")
             moveY(self.dimensions.height)
