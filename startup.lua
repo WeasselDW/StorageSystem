@@ -24,9 +24,11 @@ modem.open(modemChannel)
 if modem.isOpen(modemChannel) then
     print("Modem initialized")
 end
+-- CLUTCH init
+redstone.setOutput("right", true)
 
 --==========CODE============ --
-system = StorageSystemAPI.StorageSystem:create(256,17,11,3)
+system = StorageSystemAPI.StorageSystem:create(256,17,11,11)
 x = read()
 y = read()
 z = read()

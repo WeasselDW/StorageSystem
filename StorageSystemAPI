@@ -27,11 +27,11 @@ function StorageSystem:create(lSpeed, lRows, lWidth, lHeight)
     --Set Variables
     self.speed = lSpeed
 
-    self.dimentions = {
+    self.dimensions = {
         width = lWidth,
         length = (lRows * 4) + 3,
         rows = lRows,
-        height = lHeight
+        height = lHeight - 2
     }
 
     self.position = {
@@ -48,12 +48,15 @@ function StorageSystem:Move(x, y, z)
     local gantry1 = "top"
     local gantry2 = "front"
     local sticker = "back"
+
+    --math.ceil((self.position.z-2)/4-1) <<coord to lane#
+    --self.position.z*4+2 <<lane# to coord
     
     local function travelDelay(blocks)
         sleep(51.2/self.speed+25.6/self.speed*(blocks+1/60*blocks))
     end
 
-    local function moveX(newX)
+    function moveX(newX)
         self.position = logposition()
         local dX = newX - self.position.x 
         
@@ -75,7 +78,7 @@ function StorageSystem:Move(x, y, z)
         
         self.position = logposition()
     end
-    local function moveY(newY)
+    function moveY(newY)
         self.position = logposition()
         local dY = newY - self.position.y
         if dY == 0 then
@@ -93,7 +96,7 @@ function StorageSystem:Move(x, y, z)
         redstone.setOutput(gearshift, false)
         self.position = logposition()
     end
-        local function moveZ(newZ)
+    function moveZ(newZ)
         self.position = logposition()
         local dZ = newZ - self.position.z
         
@@ -110,12 +113,49 @@ function StorageSystem:Move(x, y, z)
         redstone.setOutput(gearshift, false)
         self.position = logposition()
     end
-    moveX(x)
-    moveY(y)
-    moveZ(z)
+    --demo order: 0, 0, 1
+
+    local currentlane = math.ceil((self.position.z-2)/4)
+
+    local function moveLane(x, y, z)
+        if math.ceil((z-2)/4-1) ~= currentlane then
+            --move over barrels
+            moveY(self.dimensions.height)
+            move(z)
+            move(x)
+            move(y)
+        else
+            --move naar positie in lane
+            moveX(x)        
+            moveZ(z)
+            moveY(y)
+        end
+    end
+    local function calculateLane(z,dropoff)
+        if dropoff then
+            -- use xyz system
+    
+        return z
+        else
+            -- use lane system from xyz
+            laneCoord = math.ceil((self.position.z-2)/4)
+        return laneCoord
+    
+    end
+
+zLane = calculateLane(z, false)    
+moveLane(x,y,zLane)    
+
+    
+
     
     
 end
+
+
+
+
+
 
 
 print("loaded StorageSystemAPI")
