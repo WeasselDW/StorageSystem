@@ -11,5 +11,5 @@ const ItemDB = new mongoose.Schema({
     Amount: {type:Number},
     Barrel: {type: barrel}
 })
-module.exports = barrelPos;
+module.exports = barrel;
 module.exports = mongoose.model('ItemDB', ItemDB)

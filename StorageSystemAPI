@@ -117,7 +117,7 @@ function StorageSystem:Move(x, y, z)
 
     local currentlane = math.ceil((self.position.z-2)/4-1)
 
-    local function moveLane(x, y, z)
+    local function moveLane(x, y, z, lane)
         if math.ceil((z-2)/4-1) ~= currentlane then
             --move over barrels
             moveY(self.dimensions.height)
