@@ -115,10 +115,11 @@ function StorageSystem:Move(x, y, z)
     end
     --demo order: 0, 0, 1
 
-    local currentlane = math.ceil((self.position.z-2)/4-1)
+    
 
     local function moveLane(x, y, z, lane)
-        if math.ceil((z-2)/4-1) ~= currentlane then
+    local currentlane = math.ceil((self.position.z-2)/4-1)    
+        if lane ~= currentlane then
             --move over barrels
             moveY(self.dimensions.height)
             moveZ(z)
@@ -144,7 +145,7 @@ function StorageSystem:Move(x, y, z)
     end
 
 zLane = calculateLane(z, false)    
-moveLane(x,y,zLane)    
+moveLane(x,y,zLane,z)    
 
     
 
