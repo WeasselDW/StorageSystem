@@ -121,9 +121,9 @@ function StorageSystem:Move(x, y, z)
         if math.ceil((z-2)/4-1) ~= currentlane then
             --move over barrels
             moveY(self.dimensions.height)
-            move(z)
-            move(x)
-            move(y)
+            moveZ(z)
+            moveX(x)
+            moveY(y)
         else
             --move naar positie in lane
             moveX(x)        
